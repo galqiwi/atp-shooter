@@ -1,7 +1,7 @@
 # Структура проекта
 
-Atp-shooter -- псевдотрехмерный шутер (по типу Wolfenstein 3d), графика реализована на основе ray casting-а,
-прочитать про этот метод можно [на википедии](https://en.wikipedia.org/wiki/Ray_casting).
+Atp-shooter -- это псевдотрехмерный шутер (по типу Wolfenstein 3d), графика реализована на основе ray casting-а,
+прочитать про этот метод можно [на Википедии](https://en.wikipedia.org/wiki/Ray_casting).
 
 В проекте есть различные классы.
 
