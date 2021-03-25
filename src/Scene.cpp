@@ -1,4 +1,5 @@
 #include "Scene.h"
+#include "maps/testmap.h"
 
 Entity::Entity(double size, Vector2D position, size_t texture_id) : size_(size), position_(position),
                                                                     texture_id_(texture_id) {
@@ -11,8 +12,8 @@ void Scene::update_scene() {
     }
 }
 
-Scene::Scene(const char *config_filename) {
-    std::ifstream fin(config_filename);
+Scene::Scene() {
+    std::istringstream fin(testMap::test_map);
     std::string command;
     while (fin >> command) {
         if (command == "fielddim") {

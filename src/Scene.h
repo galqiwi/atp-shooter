@@ -65,7 +65,7 @@ public:
 
 class Scene {
 public:
-    Scene(const char *config_filename);
+    Scene();
 
     void update_scene();
     Player& getPlayer() {

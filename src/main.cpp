@@ -4,7 +4,7 @@
 
 int main() {
     GraphicsProxy graphics_proxy(1920 / 2, 1080 / 2, "Test");
-    Scene scene("test.cfg");
+    Scene scene;
     Graphics graphics(scene, graphics_proxy);
     double dt = 0;
 

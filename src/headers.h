@@ -5,6 +5,7 @@
 #include <memory>
 #include <fstream>
 #include <string>
+#include <sstream>
 #include "math.h"
 
 const double FIREBALL_SIZE = 1.0;
