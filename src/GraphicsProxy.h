@@ -11,7 +11,7 @@ public:
     int get_x_action(); //returns -1 0 or 1 depending on left-right keys being down
     int get_y_action(); //returns -1 0 or 1 depending on down-up keys being down
 private:
-    bool up_, down_, left_, right_;
+    bool up_, down_, left_, right_; //
 };
 
 
