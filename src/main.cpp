@@ -1,6 +1,6 @@
-#include <iostream>
 #include "Scene.h"
 #include "GraphicsProxy.h"
+#include "Graphics.h"
 
 int main() {
     GraphicsProxy graphics_proxy(1920 / 2, 1080 / 2, "Test");
