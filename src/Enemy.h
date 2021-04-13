@@ -7,7 +7,7 @@ class Enemy : public Entity {
 public:
     void update() override;
 
-    Enemy(Vector2D position, size_t texture_id, double health = ENEMY_DEFAULT_HEALTH, double size = ENEMY_PIXEL_SIZE);
+    Enemy(double size, Vector2D position, size_t texture_id, double health);
 
 private:
     uint32_t health_;
