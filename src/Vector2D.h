@@ -23,5 +23,3 @@ Vector2D operator+(Vector2D a, Vector2D b);
 double operator*(Vector2D a, Vector2D b);
 
 Vector2D norm(Vector2D x);
-
-// TODO: добавить операторы

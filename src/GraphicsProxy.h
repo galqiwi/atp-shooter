@@ -8,8 +8,8 @@ class ButtonsPressed {
 public:
     ButtonsPressed(bool up, bool down, bool left, bool right);
 
-    int get_x_action(); //returns -1 0 or 1 depending on left-right keys being down
-    int get_y_action(); //returns -1 0 or 1 depending on down-up keys being down
+    int get_x_action() const; //returns -1 0 or 1 depending on left-right keys being down
+    int get_y_action() const; //returns -1 0 or 1 depending on down-up keys being down
 private:
     bool up_, down_, left_, right_; //
 };
@@ -27,13 +27,13 @@ public:
 
     bool isWorking();
 
-    ButtonsPressed getButtonsPressed();
+    static ButtonsPressed getButtonsPressed();
 
     uint64_t getTime();
 
-    unsigned int getWidth();
+    unsigned int getWidth() const;
 
-    unsigned int getHeight();
+    unsigned int getHeight() const;
 
 private:
     sf::RenderWindow window_;

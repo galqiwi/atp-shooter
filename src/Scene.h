@@ -2,14 +2,13 @@
 #define ATP_SHOOTER_SCENE_H
 
 #include "headers.h"
-#include "Vector2D.h"
-#include "GraphicsProxy.h"
-#include "Entity.h"
 #include "Player.h"
 #include "Texture.h"
+#include "Entity.h"
 
-class Scene;
+
 class Graphics;
+class EntitySpawner;
 
 class Scene {
 public:
@@ -25,6 +24,7 @@ private:
     std::vector<std::vector<int>> field_;
     std::vector<std::unique_ptr<Entity>> entities_;
     friend Graphics;
+    friend EntitySpawner;
 };
 
 #endif //ATP_SHOOTER_SCENE_H

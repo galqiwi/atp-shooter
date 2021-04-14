@@ -10,7 +10,7 @@ public:
 
     virtual void update() = 0;
 
-private:
+protected:
     double size_;
     Vector2D position_;
     size_t texture_id_;

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ATP_SHOOTER_HEADERS_H
+#define ATP_SHOOTER_HEADERS_H
 
 #include <iostream>
 #include <vector>
@@ -7,6 +8,6 @@
 #include <string>
 #include <sstream>
 #include "math.h"
+#include "constants.h"
 
-const double FIREBALL_SIZE = 1.0;
-const size_t FIREBALL_TEXTURE = 0;
+#endif //ATP_SHOOTER_HEADERS_H

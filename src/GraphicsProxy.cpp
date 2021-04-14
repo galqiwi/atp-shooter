@@ -9,8 +9,8 @@ void GraphicsProxy::draw_vertical_line(int x, int y0, int y1, uint8_t r = 255, u
     auto color = sf::Color(r, g, b);
     sf::Vertex line[] =
             {
-                    sf::Vertex(sf::Vector2f(x, y0), color),
-                    sf::Vertex(sf::Vector2f(x, y1), color)
+                    sf::Vertex(sf::Vector2f((float)x, (float)y0), color),
+                    sf::Vertex(sf::Vector2f((float)x, (float)y1), color)
             };
 
     window_.draw(line, 2, sf::Lines);
@@ -28,7 +28,7 @@ bool GraphicsProxy::isWorking() {
     sf::Event event;
     window_.pollEvent(event);
     if (event.type == sf::Event::Resized) {
-        sf::FloatRect visibleArea(0, 0, event.size.width, event.size.height);
+        sf::FloatRect visibleArea(0, 0, (float)event.size.width, (float)event.size.height);
         window_.setView(sf::View(visibleArea));
         width_ = event.size.width;
         height_ = event.size.height;
@@ -45,17 +45,17 @@ uint64_t GraphicsProxy::getTime() {
 }
 
 ButtonsPressed GraphicsProxy::getButtonsPressed() {
-    return ButtonsPressed(sf::Keyboard::isKeyPressed(sf::Keyboard::Up),
+    return {sf::Keyboard::isKeyPressed(sf::Keyboard::Up),
                           sf::Keyboard::isKeyPressed(sf::Keyboard::Down),
                           sf::Keyboard::isKeyPressed(sf::Keyboard::Left),
-                          sf::Keyboard::isKeyPressed(sf::Keyboard::Right));
+                          sf::Keyboard::isKeyPressed(sf::Keyboard::Right)};
 }
 
-unsigned int GraphicsProxy::getWidth() {
+unsigned int GraphicsProxy::getWidth() const {
     return width_;
 }
 
-unsigned int GraphicsProxy::getHeight() {
+unsigned int GraphicsProxy::getHeight() const {
     return height_;
 }
 
@@ -65,10 +65,10 @@ ButtonsPressed::ButtonsPressed(bool up, bool down, bool left, bool right) : up_(
 
 }
 
-int ButtonsPressed::get_x_action() {
+int ButtonsPressed::get_x_action() const {
     return ((int) right_) - ((int) left_);
 }
 
-int ButtonsPressed::get_y_action() {
+int ButtonsPressed::get_y_action() const {
     return ((int) up_) - ((int) down_);
 }

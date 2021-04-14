@@ -3,14 +3,16 @@
 
 #include "Entity.h"
 
+class FireballSpawner;
+
 class Fireball : public Entity {
 public:
+    using Entity::Entity;
     void update() override;
-
-    Fireball(Vector2D position, Vector2D speed);
 
 private:
     Vector2D speed_;
+    friend FireballSpawner;
 };
 
 

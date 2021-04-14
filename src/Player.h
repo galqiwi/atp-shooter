@@ -1,7 +1,7 @@
 #ifndef ATP_SHOOTER_PLAYER_H
 #define ATP_SHOOTER_PLAYER_H
 
-#include "Entity.h"
+#include "Vector2D.h"
 #include "GraphicsProxy.h"
 
 

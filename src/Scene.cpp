@@ -11,6 +11,7 @@ Scene::Scene() {
     std::istringstream fin(testMap::test_map);
     std::string command;
     while (fin >> command) {
+        // TODO: rewrite config read
         if (command == "fielddim") {
             int field_width, field_height;
             fin >> field_width >> field_height;

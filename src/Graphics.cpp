@@ -6,8 +6,8 @@ Graphics::Graphics(Scene &scene, GraphicsProxy &graphics_proxy) : scene_(&scene)
 
 void Graphics::draw_scene() {
     graphics_proxy_->clear();
-    int width = graphics_proxy_->getWidth();
-    int height = graphics_proxy_->getHeight();
+    int width = (int)graphics_proxy_->getWidth();
+    int height = (int)graphics_proxy_->getHeight();
 
     for (int x = 0; x < width; ++x) {
         double x_angle = (((double) x) / ((double) width) * 2 - 1) * M_PI / 6;
@@ -15,8 +15,8 @@ void Graphics::draw_scene() {
         Vector2D position = scene_->player_.position_;
         double deltaDistX = abs(1 / ray.x);
         double deltaDistY = abs(1 / ray.y);
-        int mapX = position.x;
-        int mapY = position.y;
+        int mapX = (int)position.x;
+        int mapY = (int)position.y;
 
         double stepX, sideDistX;
         if (ray.x < 0) {
@@ -42,11 +42,11 @@ void Graphics::draw_scene() {
         while (hit == -1) {
             if (sideDistX < sideDistY) {
                 sideDistX += deltaDistX;
-                mapX += stepX;
+                mapX += (int)stepX;
                 side = 0;
             } else {
                 sideDistY += deltaDistY;
-                mapY += stepY;
+                mapY += (int)stepY;
                 side = 1;
             }
             if (mapX < 0 || mapX >= scene_->field_.size() || mapY < 0 || mapY >= scene_->field_[0].size()) {
@@ -64,11 +64,8 @@ void Graphics::draw_scene() {
             } else {
                 perpWallDist = (mapY - position.y + (1 - stepY) / 2) / ray.y;
             }
-            int line_length = height / 1 / perpWallDist;
+            int line_length = (int) (height / perpWallDist);
 
-            if (x == width / 2) {
-//                std::cout << scene_->field_[mapX2][mapY2] << " " << mapX << " " << mapY << " " << position.x << " " << position.y << std::endl;
-            }
             int color_r = (73 * (hit + mapX * 2 + mapY * 7)) % 256;
             int color_g = (45 * (hit + mapX * 26 + mapY * 7)) % 256;
             int color_b = (165 * (hit + mapX * 29 + mapY * 14)) % 256;
