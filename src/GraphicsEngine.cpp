@@ -1,10 +1,10 @@
-#include "Graphics.h"
+#include "GraphicsEngine.h"
 
 
-Graphics::Graphics(Scene &scene, GraphicsProxy &graphics_proxy) : scene_(&scene), graphics_proxy_(&graphics_proxy) {
+GraphicsEngine::GraphicsEngine(Scene &scene, GraphicsProxy &graphics_proxy) : scene_(&scene), graphics_proxy_(&graphics_proxy) {
 }
 
-void Graphics::draw_scene() {
+void GraphicsEngine::draw_scene() {
     graphics_proxy_->clear();
     int width = (int)graphics_proxy_->getWidth();
     int height = (int)graphics_proxy_->getHeight();

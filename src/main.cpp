@@ -1,13 +1,13 @@
 #include "Scene.h"
 #include "GraphicsProxy.h"
 #include "Enemy.h"
-#include "Graphics.h"
+#include "GraphicsEngine.h"
 #include "Fireball.h"
 
 int main() {
     GraphicsProxy graphics_proxy(1920 / 2, 1080 / 2, "Test");
     Scene scene;
-    Graphics graphics(scene, graphics_proxy);
+    GraphicsEngine graphics(scene, graphics_proxy);
     double dt = 0;
 
     // example of creating enemy and fireball

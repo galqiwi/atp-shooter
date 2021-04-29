@@ -7,7 +7,7 @@
 #include "Entity.h"
 
 
-class Graphics;
+class GraphicsEngine;
 class Entity;
 
 class Scene {
@@ -23,7 +23,7 @@ private:
     std::vector<Texture> textures_;
     std::vector<std::vector<int>> field_;
     std::vector<std::unique_ptr<Entity>> entities_;
-    friend Graphics;
+    friend GraphicsEngine;
     friend Entity;
 };
 

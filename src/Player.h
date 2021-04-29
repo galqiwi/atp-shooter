@@ -5,7 +5,7 @@
 #include "GraphicsProxy.h"
 
 
-class Graphics;
+class GraphicsEngine;
 class Scene;
 
 class Player {
@@ -20,7 +20,7 @@ private:
     Vector2D position_;
     Vector2D direction_;
     uint32_t health_;
-    friend Graphics;
+    friend GraphicsEngine;
     friend Scene;
 };
 
