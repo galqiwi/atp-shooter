@@ -8,7 +8,7 @@
 
 
 class Graphics;
-class EntitySpawner;
+class Entity;
 
 class Scene {
 public:
@@ -24,7 +24,7 @@ private:
     std::vector<std::vector<int>> field_;
     std::vector<std::unique_ptr<Entity>> entities_;
     friend Graphics;
-    friend EntitySpawner;
+    friend Entity;
 };
 
 #endif //ATP_SHOOTER_SCENE_H
