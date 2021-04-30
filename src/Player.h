@@ -11,11 +11,11 @@ public:
 
     Player(Vector2D position, Vector2D direction, uint32_t health);
 
-    void action(ButtonsPressed controls, double dt);
+    void Action(ButtonsPressed controls, double dt);
 
-    Vector2D& getPosition();
+    Vector2D& GetPosition();
 
-    Vector2D& getDirection();
+    Vector2D& GetDirection();
 
 private:
     Vector2D position_;

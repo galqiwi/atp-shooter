@@ -11,7 +11,7 @@ class FireballSpawner: public EntitySpawner {
 public:
     FireballSpawner(Scene* scene, Vector2D position, Vector2D speed);
 private:
-    std::shared_ptr<Entity> create() override;
+    std::shared_ptr<Entity> Create() override;
     Vector2D position_, speed_;
 };
 

@@ -11,12 +11,12 @@ class Scene {
 public:
     Scene();
 
-    void add_entity(std::shared_ptr<Entity>);
+    void AddEntity(std::shared_ptr<Entity>);
 
-    std::vector<std::vector<int>>& get_field();
+    std::vector<std::vector<int>>& GetField();
 
-    void update_scene();
-    Player& get_player();
+    void UpdateScene();
+    Player& GetPlayer();
 private:
     Player player_;
     std::vector<Texture> textures_;

@@ -8,7 +8,7 @@ Vector2D::Vector2D(double x, double y) : x(x), y(y) {
 
 }
 
-Vector2D rot90(Vector2D v) {
+Vector2D Rot90(Vector2D v) {
     return {-v.y, v.x};
 }
 
@@ -28,7 +28,7 @@ double operator*(Vector2D a, Vector2D b) {
     return a.x * b.x + a.y * b.y;
 }
 
-Vector2D norm(Vector2D x) {
+Vector2D Norm(Vector2D x) {
     return x * (1 / sqrt(x * x));
 }
 

@@ -8,8 +8,8 @@ class ButtonsPressed {
 public:
     ButtonsPressed(bool up, bool down, bool left, bool right);
 
-    int get_x_action() const; //returns -1 0 or 1 depending on left-right keys being down
-    int get_y_action() const; //returns -1 0 or 1 depending on down-up keys being down
+    int GetXAction() const; //returns -1 0 or 1 depending on left-right keys being down
+    int GetYAction() const; //returns -1 0 or 1 depending on down-up keys being down
 private:
     bool up_, down_, left_, right_; //
 };
@@ -19,21 +19,21 @@ class GraphicsFacade {
 public:
     GraphicsFacade(unsigned int width, unsigned int height, const char *window_name);
 
-    void draw_vertical_line(int x, int y0, int y1, uint8_t r, uint8_t g, uint8_t b);
+    void DrawVerticalLine(int x, int y0, int y1, uint8_t r, uint8_t g, uint8_t b);
 
-    void clear();
+    void Clear();
 
-    void display();
+    void Display();
 
-    bool isWorking();
+    bool IsWorking();
 
-    static ButtonsPressed getButtonsPressed();
+    static ButtonsPressed GetButtonsPressed();
 
-    uint64_t getTime();
+    uint64_t GetTime();
 
-    unsigned int getWidth() const;
+    unsigned int GetWidth() const;
 
-    unsigned int getHeight() const;
+    unsigned int GetHeight() const;
 
 private:
     sf::RenderWindow window_;

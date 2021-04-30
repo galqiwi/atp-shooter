@@ -13,7 +13,7 @@ public:
     EnemySpawner(Scene* scene, Vector2D position);
 
 private:
-    std::shared_ptr<Entity> create() override;
+    std::shared_ptr<Entity> Create() override;
     Vector2D position_;
 };
 

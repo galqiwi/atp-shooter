@@ -9,10 +9,10 @@
 
 class EntitySpawner {
 public:
-    void add_to_scene();
+    void AddToScene();
 
 protected:
-    virtual std::shared_ptr<Entity> create() = 0;
+    virtual std::shared_ptr<Entity> Create() = 0;
     Scene* scene_;
 
 protected:

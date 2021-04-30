@@ -1,9 +1,9 @@
 #include "Scene.h"
 #include "maps/testmap.h"
 
-void Scene::update_scene() {
+void Scene::UpdateScene() {
     for (auto &entity: entities_) {
-        entity->update();
+        entity->Update();
     }
 }
 
@@ -26,15 +26,15 @@ Scene::Scene() {
     }
 }
 
-void Scene::add_entity(std::shared_ptr<Entity> entity) {
+void Scene::AddEntity(std::shared_ptr<Entity> entity) {
     entities_.push_back(std::move(entity));
 }
 
-std::vector<std::vector<int>>& Scene::get_field() {
+std::vector<std::vector<int>>& Scene::GetField() {
     return field_;
 }
 
-Player& Scene::get_player() {
+Player& Scene::GetPlayer() {
     return player_;
 }
 

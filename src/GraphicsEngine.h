@@ -7,7 +7,7 @@ class GraphicsEngine {
 public:
     explicit GraphicsEngine(Scene &scene, GraphicsFacade &graphics_proxy);
 
-    void draw_scene();
+    void DrawScene();
 
 private:
     Scene *scene_;

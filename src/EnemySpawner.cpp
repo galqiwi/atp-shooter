@@ -7,9 +7,9 @@
 class Enemy : public Entity {
 public:
     Enemy(double size, Vector2D position, size_t texture_id, Scene* scene, size_t health):
-            Entity(ENEMY_PIXEL_SIZE, position_, ENEMY_TEXTURE_ID, scene), health_(health) {
+            Entity(kEnemyPixelSize, position_, kEnemyTextureId, scene), health_(health) {
     }
-    void update() {
+    void Update() {
         // TODO: enemy ai
     }
 private:
@@ -21,7 +21,7 @@ EnemySpawner::EnemySpawner(Scene *scene, Vector2D position):
         EntitySpawner(scene), position_(position){
 }
 
-std::shared_ptr<Entity> EnemySpawner::create() {
-    auto* out = new Enemy(ENEMY_PIXEL_SIZE, position_, ENEMY_TEXTURE_ID, scene_, ENEMY_DEFAULT_HEALTH);
+std::shared_ptr<Entity> EnemySpawner::Create() {
+    auto* out = new Enemy(kEnemyPixelSize, position_, kEnemyTextureId, scene_, kEnemyDefaultHealth);
     return std::shared_ptr<Entity>(out);
 }

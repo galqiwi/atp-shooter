@@ -9,6 +9,6 @@ EntitySpawner::EntitySpawner(Scene *scene): scene_(scene) {
 
 }
 
-void EntitySpawner::add_to_scene() {
-    scene_->add_entity(create());
+void EntitySpawner::AddToScene() {
+    scene_->AddEntity(Create());
 }

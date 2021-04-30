@@ -12,7 +12,7 @@ public:
     double x, y;
 };
 
-Vector2D rot90(Vector2D v); // rotates vector 90 degrees anticlockwise
+Vector2D Rot90(Vector2D v); // rotates vector 90 degrees anticlockwise
 
 Vector2D operator*(double x, Vector2D v);
 
@@ -22,6 +22,6 @@ Vector2D operator+(Vector2D a, Vector2D b);
 
 double operator*(Vector2D a, Vector2D b);
 
-Vector2D norm(Vector2D x);
+Vector2D Norm(Vector2D x);
 
 std::istream& operator>>(std::istream& in, Vector2D& v);

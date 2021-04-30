@@ -5,7 +5,7 @@ GraphicsFacade::GraphicsFacade(unsigned int width, unsigned int height, const ch
 
 }
 
-void GraphicsFacade::draw_vertical_line(int x, int y0, int y1, uint8_t r = 255, uint8_t g = 255, uint8_t b = 255) {
+void GraphicsFacade::DrawVerticalLine(int x, int y0, int y1, uint8_t r = 255, uint8_t g = 255, uint8_t b = 255) {
     auto color = sf::Color(r, g, b);
     sf::Vertex line[] =
             {
@@ -16,15 +16,15 @@ void GraphicsFacade::draw_vertical_line(int x, int y0, int y1, uint8_t r = 255, 
     window_.draw(line, 2, sf::Lines);
 }
 
-void GraphicsFacade::clear() {
+void GraphicsFacade::Clear() {
     window_.clear();
 }
 
-void GraphicsFacade::display() {
+void GraphicsFacade::Display() {
     window_.display();
 }
 
-bool GraphicsFacade::isWorking() {
+bool GraphicsFacade::IsWorking() {
     sf::Event event;
     window_.pollEvent(event);
     if (event.type == sf::Event::Resized) {
@@ -40,22 +40,22 @@ bool GraphicsFacade::isWorking() {
     return window_.isOpen();
 }
 
-uint64_t GraphicsFacade::getTime() {
+uint64_t GraphicsFacade::GetTime() {
     return clock_.getElapsedTime().asMicroseconds();
 }
 
-ButtonsPressed GraphicsFacade::getButtonsPressed() {
+ButtonsPressed GraphicsFacade::GetButtonsPressed() {
     return {sf::Keyboard::isKeyPressed(sf::Keyboard::Up),
                           sf::Keyboard::isKeyPressed(sf::Keyboard::Down),
                           sf::Keyboard::isKeyPressed(sf::Keyboard::Left),
                           sf::Keyboard::isKeyPressed(sf::Keyboard::Right)};
 }
 
-unsigned int GraphicsFacade::getWidth() const {
+unsigned int GraphicsFacade::GetWidth() const {
     return width_;
 }
 
-unsigned int GraphicsFacade::getHeight() const {
+unsigned int GraphicsFacade::GetHeight() const {
     return height_;
 }
 
@@ -65,10 +65,10 @@ ButtonsPressed::ButtonsPressed(bool up, bool down, bool left, bool right) : up_(
 
 }
 
-int ButtonsPressed::get_x_action() const {
+int ButtonsPressed::GetXAction() const {
     return ((int) right_) - ((int) left_);
 }
 
-int ButtonsPressed::get_y_action() const {
+int ButtonsPressed::GetYAction() const {
     return ((int) up_) - ((int) down_);
 }

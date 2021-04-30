@@ -8,16 +8,16 @@ class Fireball : public Entity {
 public:
     using Entity::Entity;
 
-    void set_speed(Vector2D speed) {
+    void SetSpeed(Vector2D speed) {
         speed_ = speed;
     }
-    void update() override;
+    void Update() override;
 
 private:
     Vector2D speed_;
 };
 
-void Fireball::update() {
+void Fireball::Update() {
     //TODO: flying forward and hitting enemies
 }
 
@@ -26,9 +26,9 @@ FireballSpawner::FireballSpawner(Scene* scene, Vector2D position, Vector2D speed
 
 }
 
-std::shared_ptr<Entity> FireballSpawner::create() {
-    auto* out = new Fireball(FIREBALL_PIXEL_SIZE, position_, FIREBALL_TEXTURE_ID, scene_);
-    out->set_speed(speed_);
+std::shared_ptr<Entity> FireballSpawner::Create() {
+    auto* out = new Fireball(kFireballPixelSize, position_, kFireballTextureId, scene_);
+    out->SetSpeed(speed_);
     return std::shared_ptr<Entity>(out);
 }
 
