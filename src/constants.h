@@ -12,4 +12,6 @@ const double ENEMY_PIXEL_SIZE = 1.0;
 const size_t ENEMY_TEXTURE_ID = 1;
 const size_t ENEMY_DEFAULT_HEALTH = 100;
 
+const size_t PLAYER_DEFAULT_HEALTH = 1.0;
+
 #endif //ATP_SHOOTER_CONSTANTS_H

@@ -1,12 +1,12 @@
 #ifndef ATP_SHOOTER_PLAYER_H
 #define ATP_SHOOTER_PLAYER_H
 
+#include "headers.h"
 #include "Vector2D.h"
 #include "GraphicsProxy.h"
 
 
 class GraphicsEngine;
-class Scene;
 
 class Player {
 public:
@@ -21,8 +21,8 @@ private:
     Vector2D direction_;
     uint32_t health_;
     friend GraphicsEngine;
-    friend Scene;
 };
 
+std::istream& operator>>(std::istream& in, Player& player);
 
 #endif //ATP_SHOOTER_PLAYER_H

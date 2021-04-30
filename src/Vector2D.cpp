@@ -31,3 +31,8 @@ double operator*(Vector2D a, Vector2D b) {
 Vector2D norm(Vector2D x) {
     return x * (1 / sqrt(x * x));
 }
+
+std::istream& operator>>(std::istream& in, Vector2D& v) {
+    in >> v.x >> v.y;
+    return in;
+}

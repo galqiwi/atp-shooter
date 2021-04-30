@@ -5,14 +5,15 @@
 #ifndef ATP_SHOOTER_ENEMYSPAWNER_H
 #define ATP_SHOOTER_ENEMYSPAWNER_H
 
-#include "Entity.h"
+#include "EntitySpawner.h"
 
-class EnemySpawner: public Entity::EntitySpawner {
+
+class EnemySpawner: public EntitySpawner {
 public:
     EnemySpawner(Scene* scene, Vector2D position);
 
 private:
-    Entity* create() override;
+    std::shared_ptr<Entity> create() override;
     Vector2D position_;
 };
 

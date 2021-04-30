@@ -6,13 +6,15 @@ GraphicsEngine::GraphicsEngine(Scene &scene, GraphicsProxy &graphics_proxy) : sc
 
 void GraphicsEngine::draw_scene() {
     graphics_proxy_->clear();
+    auto& scene_field = scene_->get_field();
+    auto& player = scene_->get_player();
     int width = (int)graphics_proxy_->getWidth();
     int height = (int)graphics_proxy_->getHeight();
 
     for (int x = 0; x < width; ++x) {
         double x_angle = (((double) x) / ((double) width) * 2 - 1) * M_PI / 6;
-        Vector2D ray = cos(x_angle) * scene_->player_.direction_ + sin(x_angle) * rot90(scene_->player_.direction_);
-        Vector2D position = scene_->player_.position_;
+        Vector2D ray = cos(x_angle) * player.direction_ + sin(x_angle) * rot90(player.direction_);
+        Vector2D position = player.position_;
         double deltaDistX = abs(1 / ray.x);
         double deltaDistY = abs(1 / ray.y);
         int mapX = (int)position.x;
@@ -49,11 +51,11 @@ void GraphicsEngine::draw_scene() {
                 mapY += (int)stepY;
                 side = 1;
             }
-            if (mapX < 0 || mapX >= scene_->field_.size() || mapY < 0 || mapY >= scene_->field_[0].size()) {
+            if (mapX < 0 || mapX >= scene_field.size() || mapY < 0 || mapY >= scene_field[0].size()) {
                 break;
             }
-            if (scene_->field_[mapX][mapY] != -1) {
-                hit = scene_->field_[mapX][mapY];
+            if (scene_field[mapX][mapY] != -1) {
+                hit = scene_field[mapX][mapY];
             }
         }
 

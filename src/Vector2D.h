@@ -23,3 +23,5 @@ Vector2D operator+(Vector2D a, Vector2D b);
 double operator*(Vector2D a, Vector2D b);
 
 Vector2D norm(Vector2D x);
+
+std::istream& operator>>(std::istream& in, Vector2D& v);

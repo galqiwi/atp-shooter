@@ -1,7 +1,7 @@
 #ifndef ATP_SHOOTER_FIREBALL_H
 #define ATP_SHOOTER_FIREBALL_H
 
-#include "Entity.h"
+#include "EnemySpawner.h"
 
 class FireballSpawner;
 
@@ -10,11 +10,11 @@ public:
     using Entity::Entity;
     void update() override;
 
-    class FireballSpawner: public Entity::EntitySpawner {
+    class FireballSpawner: public EntitySpawner {
     public:
         FireballSpawner(Scene* scene, Vector2D position, Vector2D speed);
     private:
-        Entity* create() override;
+        std::shared_ptr<Entity> create() override;
         Vector2D position_, speed_;
     };
 

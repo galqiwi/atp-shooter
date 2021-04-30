@@ -19,3 +19,11 @@ void Player::action(ButtonsPressed controls, double dt) {
     position_ = position_ + direction_ * 0.01 * dt * y_action;
     direction_ = direction_ * cos(angle) + rot90(direction_) * sin(angle);
 }
+
+std::istream& operator>>(std::istream& in, Player& player){
+    Vector2D direction, position;
+    in >> direction >> position;
+    direction = norm(direction);
+    player = Player(position, direction, PLAYER_DEFAULT_HEALTH);
+    return in;
+}
