@@ -1,8 +1,5 @@
 #include "Player.h"
 
-Player::Player() {
-}
-
 Player::Player(Vector2D position, Vector2D direction, uint32_t health) : position_(position), direction_(direction),
                                                                          health_(health) {
 
@@ -18,6 +15,14 @@ void Player::action(ButtonsPressed controls, double dt) {
 
     position_ = position_ + direction_ * 0.01 * dt * y_action;
     direction_ = direction_ * cos(angle) + rot90(direction_) * sin(angle);
+}
+
+Vector2D &Player::getPosition() {
+    return position_;
+}
+
+Vector2D &Player::getDirection() {
+    return direction_;
 }
 
 std::istream& operator>>(std::istream& in, Player& player){

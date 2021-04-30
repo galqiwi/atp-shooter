@@ -1,5 +1,5 @@
-#ifndef ATP_SHOOTER_GRAPHICSPROXY_H
-#define ATP_SHOOTER_GRAPHICSPROXY_H
+#ifndef ATP_SHOOTER_GRAPHICSFACADE_H
+#define ATP_SHOOTER_GRAPHICSFACADE_H
 
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
@@ -15,9 +15,9 @@ private:
 };
 
 
-class GraphicsProxy {
+class GraphicsFacade {
 public:
-    GraphicsProxy(unsigned int width, unsigned int height, const char *window_name);
+    GraphicsFacade(unsigned int width, unsigned int height, const char *window_name);
 
     void draw_vertical_line(int x, int y0, int y1, uint8_t r, uint8_t g, uint8_t b);
 
@@ -42,4 +42,4 @@ private:
 };
 
 
-#endif //ATP_SHOOTER_GRAPHICSPROXY_H
+#endif //ATP_SHOOTER_GRAPHICSFACADE_H

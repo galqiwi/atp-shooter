@@ -3,24 +3,24 @@
 
 #include "headers.h"
 #include "Vector2D.h"
-#include "GraphicsProxy.h"
-
-
-class GraphicsEngine;
+#include "GraphicsFacade.h"
 
 class Player {
 public:
-    Player();
+    Player() = default;
 
     Player(Vector2D position, Vector2D direction, uint32_t health);
 
     void action(ButtonsPressed controls, double dt);
 
+    Vector2D& getPosition();
+
+    Vector2D& getDirection();
+
 private:
     Vector2D position_;
     Vector2D direction_;
-    uint32_t health_;
-    friend GraphicsEngine;
+    uint32_t health_{};
 };
 
 std::istream& operator>>(std::istream& in, Player& player);

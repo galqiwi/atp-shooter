@@ -19,6 +19,6 @@ include_directories(${CMAKE_SOURCE_DIR}/SFML-2.5.1/include)
 link_directories(${CMAKE_SOURCE_DIR}/SFML-2.5.1/lib)
 
 
-add_executable(atp-shooter ${PROJECT_SOURCE_DIR}/src/main.cpp ${PROJECT_SOURCE_DIR}/src/Vector2D.cpp src/Scene.cpp src/Scene.h src/GraphicsProxy.cpp src/GraphicsProxy.h src/Entity.cpp src/Entity.h src/Fireball.cpp src/Fireball.h src/Player.cpp src/Player.h src/Texture.cpp src/Texture.h src/GraphicsEngine.cpp src/GraphicsEngine.h src/constants.h src/EnemySpawner.cpp src/EnemySpawner.h src/EntitySpawner.cpp src/EntitySpawner.h)
+add_executable(atp-shooter ${PROJECT_SOURCE_DIR}/src/main.cpp ${PROJECT_SOURCE_DIR}/src/Vector2D.cpp src/Scene.cpp src/Scene.h src/GraphicsFacade.cpp src/GraphicsFacade.h src/Entity.cpp src/Entity.h src/Player.cpp src/Player.h src/Texture.cpp src/Texture.h src/GraphicsEngine.cpp src/GraphicsEngine.h src/constants.h src/EnemySpawner.cpp src/EnemySpawner.h src/EntitySpawner.cpp src/EntitySpawner.h src/FireballSpawner.cpp src/FireballSpawner.h)
 
 target_link_libraries(atp-shooter sfml-system sfml-graphics sfml-window)

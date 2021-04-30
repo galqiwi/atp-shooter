@@ -1,11 +1,11 @@
 #include "Scene.h"
-#include "GraphicsProxy.h"
+#include "GraphicsFacade.h"
 #include "GraphicsEngine.h"
-#include "Fireball.h"
+#include "FireballSpawner.h"
 #include "EnemySpawner.h"
 
 int main() {
-    GraphicsProxy graphics_proxy(1920 / 2, 1080 / 2, "Test");
+    GraphicsFacade graphics_proxy(1920 / 2, 1080 / 2, "Test");
     Scene scene;
     GraphicsEngine graphics(scene, graphics_proxy);
     double dt = 0;
@@ -14,7 +14,7 @@ int main() {
     EnemySpawner enemy_spawner(&scene, Vector2D(1, 1));
     enemy_spawner.add_to_scene();
 
-    Fireball::FireballSpawner fireball_spawner(&scene, Vector2D(1, 1), Vector2D(1, 1));
+    FireballSpawner fireball_spawner(&scene, Vector2D(1, 1), Vector2D(1, 1));
     fireball_spawner.add_to_scene();
 
     size_t frame_counter = 0;

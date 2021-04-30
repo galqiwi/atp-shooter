@@ -6,7 +6,6 @@
 #include "Texture.h"
 #include "Entity.h"
 
-class GraphicsEngine;
 
 class Scene {
 public:

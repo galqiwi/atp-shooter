@@ -1,20 +1,22 @@
 #include "GraphicsEngine.h"
 
 
-GraphicsEngine::GraphicsEngine(Scene &scene, GraphicsProxy &graphics_proxy) : scene_(&scene), graphics_proxy_(&graphics_proxy) {
+GraphicsEngine::GraphicsEngine(Scene &scene, GraphicsFacade &graphics_proxy) : scene_(&scene), graphics_proxy_(&graphics_proxy) {
 }
 
 void GraphicsEngine::draw_scene() {
     graphics_proxy_->clear();
     auto& scene_field = scene_->get_field();
     auto& player = scene_->get_player();
+    auto& player_position = player.getPosition();
+    auto& player_direction = player.getDirection();
     int width = (int)graphics_proxy_->getWidth();
     int height = (int)graphics_proxy_->getHeight();
 
     for (int x = 0; x < width; ++x) {
         double x_angle = (((double) x) / ((double) width) * 2 - 1) * M_PI / 6;
-        Vector2D ray = cos(x_angle) * player.direction_ + sin(x_angle) * rot90(player.direction_);
-        Vector2D position = player.position_;
+        Vector2D ray = cos(x_angle) * player_direction + sin(x_angle) * rot90(player_direction);
+        Vector2D position = player_position;
         double deltaDistX = abs(1 / ray.x);
         double deltaDistY = abs(1 / ray.y);
         int mapX = (int)position.x;

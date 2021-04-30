@@ -1,11 +1,11 @@
-#include "GraphicsProxy.h"
+#include "GraphicsFacade.h"
 
-GraphicsProxy::GraphicsProxy(unsigned int width, unsigned int height, const char *window_name) :
+GraphicsFacade::GraphicsFacade(unsigned int width, unsigned int height, const char *window_name) :
         window_(sf::VideoMode(width, height), window_name), width_(width), height_(height), clock_() {
 
 }
 
-void GraphicsProxy::draw_vertical_line(int x, int y0, int y1, uint8_t r = 255, uint8_t g = 255, uint8_t b = 255) {
+void GraphicsFacade::draw_vertical_line(int x, int y0, int y1, uint8_t r = 255, uint8_t g = 255, uint8_t b = 255) {
     auto color = sf::Color(r, g, b);
     sf::Vertex line[] =
             {
@@ -16,15 +16,15 @@ void GraphicsProxy::draw_vertical_line(int x, int y0, int y1, uint8_t r = 255, u
     window_.draw(line, 2, sf::Lines);
 }
 
-void GraphicsProxy::clear() {
+void GraphicsFacade::clear() {
     window_.clear();
 }
 
-void GraphicsProxy::display() {
+void GraphicsFacade::display() {
     window_.display();
 }
 
-bool GraphicsProxy::isWorking() {
+bool GraphicsFacade::isWorking() {
     sf::Event event;
     window_.pollEvent(event);
     if (event.type == sf::Event::Resized) {
@@ -40,22 +40,22 @@ bool GraphicsProxy::isWorking() {
     return window_.isOpen();
 }
 
-uint64_t GraphicsProxy::getTime() {
+uint64_t GraphicsFacade::getTime() {
     return clock_.getElapsedTime().asMicroseconds();
 }
 
-ButtonsPressed GraphicsProxy::getButtonsPressed() {
+ButtonsPressed GraphicsFacade::getButtonsPressed() {
     return {sf::Keyboard::isKeyPressed(sf::Keyboard::Up),
                           sf::Keyboard::isKeyPressed(sf::Keyboard::Down),
                           sf::Keyboard::isKeyPressed(sf::Keyboard::Left),
                           sf::Keyboard::isKeyPressed(sf::Keyboard::Right)};
 }
 
-unsigned int GraphicsProxy::getWidth() const {
+unsigned int GraphicsFacade::getWidth() const {
     return width_;
 }
 
-unsigned int GraphicsProxy::getHeight() const {
+unsigned int GraphicsFacade::getHeight() const {
     return height_;
 }
 
