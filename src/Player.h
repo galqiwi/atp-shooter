@@ -9,6 +9,10 @@ class Player {
 public:
     Player() = default;
 
+    //Copyable
+    Player(const Player&) = default;
+    Player& operator=(const Player&) = default;
+
     Player(Vector2D position, Vector2D direction, uint32_t health);
 
     void Action(ButtonsPressed controls, double dt);

@@ -17,6 +17,31 @@ public:
 
     void UpdateScene();
     Player& GetPlayer();
+
+    class SceneSnapshot {
+    public:
+        struct SceneState {
+            std::vector<std::shared_ptr<Entity>> entities_;
+            Player player_;
+        };
+
+        //not copyable
+        SceneSnapshot(const SceneSnapshot&) = default;
+        SceneSnapshot& operator=(const SceneSnapshot&) = default;
+
+        SceneSnapshot(SceneSnapshot&&) = default;
+        SceneSnapshot& operator=(SceneSnapshot&&) = default;
+
+
+        SceneSnapshot(Scene& scene);
+        SceneState& GetState();
+
+    private:
+        SceneState state_;
+    };
+
+    SceneSnapshot Save();
+    void Restore(SceneSnapshot);
 private:
     Player player_;
     std::vector<Texture> textures_;

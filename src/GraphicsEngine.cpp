@@ -17,67 +17,66 @@ void GraphicsEngine::DrawScene() {
         double x_angle = (((double) x) / ((double) width) * 2 - 1) * M_PI / 6;
         Vector2D ray = cos(x_angle) * player_direction + sin(x_angle) * Rot90(player_direction);
         Vector2D position = player_position;
-        double deltaDistX = abs(1 / ray.x);
-        double deltaDistY = abs(1 / ray.y);
-        int mapX = (int)position.x;
-        int mapY = (int)position.y;
+        double delta_dist_x = abs(1 / ray.x);
+        double delta_dist_y = abs(1 / ray.y);
+        int map_x = (int)position.x;
+        int map_y = (int)position.y;
 
-        double stepX, sideDistX;
+        double step_x, side_dist_x;
         if (ray.x < 0) {
-            stepX = -1;
-            sideDistX = (position.x - ((double) mapX)) * deltaDistX;
+            step_x = -1;
+            side_dist_x = (position.x - ((double) map_x)) * delta_dist_x;
         } else {
-            stepX = 1;
-            sideDistX = (-(position.x - (double) mapX) + 1) * deltaDistX;
+            step_x = 1;
+            side_dist_x = (-(position.x - (double) map_x) + 1) * delta_dist_x;
         }
 
-        double stepY, sideDistY;
+        double step_y, side_dist_y;
         if (ray.y < 0) {
-            stepY = -1;
-            sideDistY = (position.y - (double) mapY) * deltaDistY;
+            step_y = -1;
+            side_dist_y = (position.y - (double) map_y) * delta_dist_y;
         } else {
-            stepY = 1;
-            sideDistY = (-(position.y - (double) mapY) + 1) * deltaDistY;
+            step_y = 1;
+            side_dist_y = (-(position.y - (double) map_y) + 1) * delta_dist_y;
         }
 
         int hit = -1;
-        int side = 0;
+        int side;
 
         while (hit == -1) {
-            if (sideDistX < sideDistY) {
-                sideDistX += deltaDistX;
-                mapX += (int)stepX;
+            if (side_dist_x < side_dist_y) {
+                side_dist_x += delta_dist_x;
+                map_x += (int)step_x;
                 side = 0;
             } else {
-                sideDistY += deltaDistY;
-                mapY += (int)stepY;
+                side_dist_y += delta_dist_y;
+                map_y += (int)step_y;
                 side = 1;
             }
-            if (mapX < 0 || mapX >= scene_field.size() || mapY < 0 || mapY >= scene_field[0].size()) {
+            if (map_x < 0 || map_x >= scene_field.size() || map_y < 0 || map_y >= scene_field[0].size()) {
                 break;
             }
-            if (scene_field[mapX][mapY] != -1) {
-                hit = scene_field[mapX][mapY];
+            if (scene_field[map_x][map_y] != -1) {
+                hit = scene_field[map_x][map_y];
             }
         }
 
-        double perpWallDist;
+        double perp_wall_dist;
         if (hit != -1) {
             if (side == 0) {
-                perpWallDist = (mapX - position.x + (1 - stepX) / 2) / ray.x;
+                perp_wall_dist = (map_x - position.x + (1 - step_x) / 2) / ray.x;
             } else {
-                perpWallDist = (mapY - position.y + (1 - stepY) / 2) / ray.y;
+                perp_wall_dist = (map_y - position.y + (1 - step_y) / 2) / ray.y;
             }
-            int line_length = (int) (height / perpWallDist);
+            int line_length = (int) (height / perp_wall_dist);
 
-            int color_r = (73 * (hit + mapX * 2 + mapY * 7)) % 256;
-            int color_g = (45 * (hit + mapX * 26 + mapY * 7)) % 256;
-            int color_b = (165 * (hit + mapX * 29 + mapY * 14)) % 256;
+            int color_r = (73 * (hit + map_x * 2 + map_y * 7)) % 256;
+            int color_g = (45 * (hit + map_x * 26 + map_y * 7)) % 256;
+            int color_b = (165 * (hit + map_x * 29 + map_y * 14)) % 256;
             graphics_proxy_->DrawVerticalLine(x, std::max(0, (int) (height / 2 - line_length / 2)),
                                                 std::min((int) height - 1, (int) (height / 2 + line_length / 2)),
                                                 color_r, color_g, color_b);
         } else {
-            perpWallDist = 1e9;
         }
 
     }

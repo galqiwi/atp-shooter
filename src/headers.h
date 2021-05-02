@@ -7,6 +7,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <optional>
 #include "math.h"
 #include "constants.h"
 

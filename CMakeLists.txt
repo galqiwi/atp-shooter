@@ -21,4 +21,6 @@ link_directories(${CMAKE_SOURCE_DIR}/SFML-2.5.1/lib)
 
 add_executable(atp-shooter ${PROJECT_SOURCE_DIR}/src/main.cpp ${PROJECT_SOURCE_DIR}/src/Vector2D.cpp src/Scene.cpp src/Scene.h src/GraphicsFacade.cpp src/GraphicsFacade.h src/Entity.cpp src/Entity.h src/Player.cpp src/Player.h src/Texture.cpp src/Texture.h src/GraphicsEngine.cpp src/GraphicsEngine.h src/constants.h src/EnemySpawner.cpp src/EnemySpawner.h src/EntitySpawner.cpp src/EntitySpawner.h src/FireballSpawner.cpp src/FireballSpawner.h)
 
+set_property(TARGET atp-shooter PROPERTY CXX_STANDARD 17)
+
 target_link_libraries(atp-shooter sfml-system sfml-graphics sfml-window)

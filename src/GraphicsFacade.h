@@ -4,14 +4,10 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 
-class ButtonsPressed {
-public:
-    ButtonsPressed(bool up, bool down, bool left, bool right);
-
+struct ButtonsPressed {
     int GetXAction() const; //returns -1 0 or 1 depending on left-right keys being down
     int GetYAction() const; //returns -1 0 or 1 depending on down-up keys being down
-private:
-    bool up_, down_, left_, right_; //
+    bool up, down, left, right, quick_save, quick_load;
 };
 
 
