@@ -1,17 +1,17 @@
 #include "GraphicsEngine.h"
 
 
-GraphicsEngine::GraphicsEngine(Scene &scene, GraphicsFacade &graphics_proxy) : scene_(&scene), graphics_proxy_(&graphics_proxy) {
+GraphicsEngine::GraphicsEngine(Scene &scene, GraphicsFacade &graphics_facade) : scene_(&scene), graphics_facade_(&graphics_facade) {
 }
 
 void GraphicsEngine::DrawScene() {
-    graphics_proxy_->Clear();
+    graphics_facade_->Clear();
     auto& scene_field = scene_->GetField();
     auto& player = scene_->GetPlayer();
     auto& player_position = player.GetPosition();
     auto& player_direction = player.GetDirection();
-    int width = (int)graphics_proxy_->GetWidth();
-    int height = (int)graphics_proxy_->GetHeight();
+    int width = (int)graphics_facade_->GetWidth();
+    int height = (int)graphics_facade_->GetHeight();
 
     for (int x = 0; x < width; ++x) {
         double x_angle = (((double) x) / ((double) width) * 2 - 1) * M_PI / 6;
@@ -70,17 +70,17 @@ void GraphicsEngine::DrawScene() {
             }
             int line_length = (int) (height / perp_wall_dist);
 
-            int color_r = (73 * (hit + map_x * 2 + map_y * 7)) % 256;
-            int color_g = (45 * (hit + map_x * 26 + map_y * 7)) % 256;
-            int color_b = (165 * (hit + map_x * 29 + map_y * 14)) % 256;
-            graphics_proxy_->DrawVerticalLine(x, std::max(0, (int) (height / 2 - line_length / 2)),
-                                                std::min((int) height - 1, (int) (height / 2 + line_length / 2)),
-                                                color_r, color_g, color_b);
+            int color_r = (73 * (hit + mapX * 2 + mapY * 7)) % 256;
+            int color_g = (45 * (hit + mapX * 26 + mapY * 7)) % 256;
+            int color_b = (165 * (hit + mapX * 29 + mapY * 14)) % 256;
+            graphics_facade_->DrawVerticalLine(x, std::max(0, (int) (height / 2 - line_length / 2)),
+                                               std::min((int) height - 1, (int) (height / 2 + line_length / 2)),
+                                               color_r, color_g, color_b);
         } else {
         }
 
     }
 
 
-    graphics_proxy_->Display();
+    graphics_facade_->Display();
 }
