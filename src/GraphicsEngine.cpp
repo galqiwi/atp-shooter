@@ -70,9 +70,9 @@ void GraphicsEngine::DrawScene() {
             }
             int line_length = (int) (height / perp_wall_dist);
 
-            int color_r = (73 * (hit + mapX * 2 + mapY * 7)) % 256;
-            int color_g = (45 * (hit + mapX * 26 + mapY * 7)) % 256;
-            int color_b = (165 * (hit + mapX * 29 + mapY * 14)) % 256;
+            int color_r = (73 * (hit + map_x * 2 + map_y * 7)) % 256;
+            int color_g = (45 * (hit + map_x * 26 + map_y * 7)) % 256;
+            int color_b = (165 * (hit + map_x * 29 + map_y * 14)) % 256;
             graphics_facade_->DrawVerticalLine(x, std::max(0, (int) (height / 2 - line_length / 2)),
                                                std::min((int) height - 1, (int) (height / 2 + line_length / 2)),
                                                color_r, color_g, color_b);
