@@ -5,9 +5,9 @@
 #include "EnemySpawner.h"
 
 int main() {
-    GraphicsFacade graphics_proxy(1920 / 2, 1080 / 2, "Test");
+    GraphicsFacade graphics_facade(1920 / 2, 1080 / 2, "Test");
     Scene scene;
-    GraphicsEngine graphics(scene, graphics_proxy);
+    GraphicsEngine graphics(scene, graphics_facade);
     double dt = 0;
 
     // example of creating enemy and fireball
@@ -19,12 +19,12 @@ int main() {
 
     size_t frame_counter = 0;
     double time_counter = 0;
-    while (graphics_proxy.IsWorking()) {
-        double begin_timer = graphics_proxy.GetTime();
+    while (graphics_facade.IsWorking()) {
+        double begin_timer = graphics_facade.GetTime();
         scene.UpdateScene();
         graphics.DrawScene();
-        scene.GetPlayer().Action(graphics_proxy.GetButtonsPressed(), dt);
-        dt = graphics_proxy.GetTime() - begin_timer;
+        scene.GetPlayer().Action(graphics_facade.GetButtonsPressed(), dt);
+        dt = graphics_facade.GetTime() - begin_timer;
         time_counter += dt;
         ++frame_counter;
 

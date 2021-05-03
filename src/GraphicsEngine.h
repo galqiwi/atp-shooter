@@ -5,13 +5,13 @@
 
 class GraphicsEngine {
 public:
-    explicit GraphicsEngine(Scene &scene, GraphicsFacade &graphics_proxy);
+    explicit GraphicsEngine(Scene &scene, GraphicsFacade &graphics_facade);
 
     void DrawScene();
 
 private:
     Scene *scene_;
-    GraphicsFacade *graphics_proxy_;
+    GraphicsFacade *graphics_facade_;
 };
 
 
