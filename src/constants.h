@@ -5,11 +5,14 @@
 #ifndef ATP_SHOOTER_CONSTANTS_H
 #define ATP_SHOOTER_CONSTANTS_H
 
-const double FIREBALL_PIXEL_SIZE = 1.0;
-const size_t FIREBALL_TEXTURE_ID = 0;
+const double kFireballPixelSize = 1.0;
+const size_t kFireballTextureId = 0;
 
-const double ENEMY_PIXEL_SIZE = 1.0;
-const size_t ENEMY_TEXTURE_ID = 1;
-const size_t ENEMY_DEFAULT_HEALTH = 100;
+const double kEnemyPixelSize = 1.0;
+const size_t kEnemyTextureId = 1;
+const size_t kEnemyDefaultHealth = 100;
+
+const size_t kPlayerDefaultHealth = 1.0;
+
 
 #endif //ATP_SHOOTER_CONSTANTS_H

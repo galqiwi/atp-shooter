@@ -1,18 +1,22 @@
-#include "Graphics.h"
+#include "GraphicsEngine.h"
 
 
-Graphics::Graphics(Scene &scene, GraphicsProxy &graphics_proxy) : scene_(&scene), graphics_proxy_(&graphics_proxy) {
+GraphicsEngine::GraphicsEngine(Scene &scene, GraphicsFacade &graphics_facade) : scene_(&scene), graphics_facade_(&graphics_facade) {
 }
 
-void Graphics::draw_scene() {
-    graphics_proxy_->clear();
-    int width = (int)graphics_proxy_->getWidth();
-    int height = (int)graphics_proxy_->getHeight();
+void GraphicsEngine::DrawScene() {
+    graphics_facade_->Clear();
+    auto& scene_field = scene_->GetField();
+    auto& player = scene_->GetPlayer();
+    auto& player_position = player.GetPosition();
+    auto& player_direction = player.GetDirection();
+    int width = (int)graphics_facade_->GetWidth();
+    int height = (int)graphics_facade_->GetHeight();
 
     for (int x = 0; x < width; ++x) {
         double x_angle = (((double) x) / ((double) width) * 2 - 1) * M_PI / 6;
-        Vector2D ray = cos(x_angle) * scene_->player_.direction_ + sin(x_angle) * rot90(scene_->player_.direction_);
-        Vector2D position = scene_->player_.position_;
+        Vector2D ray = cos(x_angle) * player_direction + sin(x_angle) * Rot90(player_direction);
+        Vector2D position = player_position;
         double deltaDistX = abs(1 / ray.x);
         double deltaDistY = abs(1 / ray.y);
         int mapX = (int)position.x;
@@ -49,11 +53,11 @@ void Graphics::draw_scene() {
                 mapY += (int)stepY;
                 side = 1;
             }
-            if (mapX < 0 || mapX >= scene_->field_.size() || mapY < 0 || mapY >= scene_->field_[0].size()) {
+            if (mapX < 0 || mapX >= scene_field.size() || mapY < 0 || mapY >= scene_field[0].size()) {
                 break;
             }
-            if (scene_->field_[mapX][mapY] != -1) {
-                hit = scene_->field_[mapX][mapY];
+            if (scene_field[mapX][mapY] != -1) {
+                hit = scene_field[mapX][mapY];
             }
         }
 
@@ -69,9 +73,9 @@ void Graphics::draw_scene() {
             int color_r = (73 * (hit + mapX * 2 + mapY * 7)) % 256;
             int color_g = (45 * (hit + mapX * 26 + mapY * 7)) % 256;
             int color_b = (165 * (hit + mapX * 29 + mapY * 14)) % 256;
-            graphics_proxy_->draw_vertical_line(x, std::max(0, (int) (height / 2 - line_length / 2)),
-                                                std::min((int) height - 1, (int) (height / 2 + line_length / 2)),
-                                                color_r, color_g, color_b);
+            graphics_facade_->DrawVerticalLine(x, std::max(0, (int) (height / 2 - line_length / 2)),
+                                               std::min((int) height - 1, (int) (height / 2 + line_length / 2)),
+                                               color_r, color_g, color_b);
         } else {
             perpWallDist = 1e9;
         }
@@ -79,5 +83,5 @@ void Graphics::draw_scene() {
     }
 
 
-    graphics_proxy_->display();
+    graphics_facade_->Display();
 }

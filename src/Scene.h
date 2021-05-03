@@ -7,24 +7,21 @@
 #include "Entity.h"
 
 
-class Graphics;
-class EntitySpawner;
-
 class Scene {
 public:
     Scene();
 
-    void update_scene();
-    Player& getPlayer() {
-        return player_;
-    }
+    void AddEntity(std::shared_ptr<Entity>);
+
+    std::vector<std::vector<int>>& GetField();
+
+    void UpdateScene();
+    Player& GetPlayer();
 private:
     Player player_;
     std::vector<Texture> textures_;
     std::vector<std::vector<int>> field_;
-    std::vector<std::unique_ptr<Entity>> entities_;
-    friend Graphics;
-    friend EntitySpawner;
+    std::vector<std::shared_ptr<Entity>> entities_;
 };
 
 #endif //ATP_SHOOTER_SCENE_H

@@ -1,28 +1,38 @@
 #include "Scene.h"
-#include "GraphicsProxy.h"
-#include "Graphics.h"
-#include "EnemySpawner.h"
+#include "GraphicsFacade.h"
+#include "GraphicsEngine.h"
 #include "FireballSpawner.h"
+#include "EnemySpawner.h"
 
 int main() {
-    GraphicsProxy graphics_proxy(1920 / 2, 1080 / 2, "Test");
+    GraphicsFacade graphics_facade(1920 / 2, 1080 / 2, "Test");
     Scene scene;
-    Graphics graphics(scene, graphics_proxy);
+    GraphicsEngine graphics(scene, graphics_facade);
     double dt = 0;
 
     // example of creating enemy and fireball
     EnemySpawner enemy_spawner(&scene, Vector2D(1, 1));
-    enemy_spawner.add_to_scene();
+    enemy_spawner.AddToScene();
 
     FireballSpawner fireball_spawner(&scene, Vector2D(1, 1), Vector2D(1, 1));
-    fireball_spawner.add_to_scene();
+    fireball_spawner.AddToScene();
 
-    while (graphics_proxy.isWorking()) {
-        double begin_timer = graphics_proxy.getTime();
-        scene.update_scene();
-        graphics.draw_scene();
-        scene.getPlayer().action(graphics_proxy.getButtonsPressed(), dt);
-        dt = graphics_proxy.getTime() - begin_timer;
+    size_t frame_counter = 0;
+    double time_counter = 0;
+    while (graphics_facade.IsWorking()) {
+        double begin_timer = graphics_facade.GetTime();
+        scene.UpdateScene();
+        graphics.DrawScene();
+        scene.GetPlayer().Action(graphics_facade.GetButtonsPressed(), dt);
+        dt = graphics_facade.GetTime() - begin_timer;
+        time_counter += dt;
+        ++frame_counter;
+
+        if (time_counter > 1e6) {
+            std::cout << ((double)frame_counter) / (time_counter / 1e6) << "fps" << std::endl;
+            frame_counter = 0;
+            time_counter = 0;
+        }
     }
 
 
