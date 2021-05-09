@@ -9,7 +9,7 @@
 #include "SaveDecorator.h"
 #include "WalkCommand.h"
 
-std::shared_ptr<InputCommand> InputCommand::GetCommand(Scene* scene, SceneSnapshotHolder* scene_snapshot_holder,
+std::shared_ptr<InputCommand> InputCommand::GetCommand(Scene* scene, Scene::SceneSnapshotHolder* scene_snapshot_holder,
                                                        double dt) {
 
     auto buttons_pressed = GraphicsFacade::GetButtonsPressed();

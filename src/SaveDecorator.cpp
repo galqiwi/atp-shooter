@@ -4,7 +4,7 @@
 
 #include "SaveDecorator.h"
 
-SaveDecorator::SaveDecorator(InputCommandPtr wrappee, SceneSnapshotHolder *scene_snapshot_holder):
+SaveDecorator::SaveDecorator(InputCommandPtr wrappee, Scene::SceneSnapshotHolder *scene_snapshot_holder):
         InputCommandDecorator(wrappee), scene_snapshot_holder_(scene_snapshot_holder) {
 
 }

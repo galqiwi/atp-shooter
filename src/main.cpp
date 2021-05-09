@@ -4,12 +4,11 @@
 #include "FireballSpawner.h"
 #include "EnemySpawner.h"
 #include "InputCommand.h"
-#include "SceneSnapshotHolder.h"
 
 int main() {
     GraphicsFacade graphics_facade(1920 / 2, 1080 / 2, "Test");
     Scene scene;
-    SceneSnapshotHolder scene_snapshot_holder(&scene);
+    Scene::SceneSnapshotHolder scene_snapshot_holder(&scene);
     GraphicsEngine graphics(scene, graphics_facade);
     double dt = 0;
 

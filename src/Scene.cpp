@@ -63,3 +63,19 @@ Scene::SceneSnapshot::SceneSnapshot(Scene &scene) {
 Scene::SceneSnapshot::SceneState &Scene::SceneSnapshot::GetState() {
     return state_;
 }
+
+void Scene::SceneSnapshotHolder::Restore() {
+    if (history_.empty()) {
+        return;
+    }
+    auto snapshot = std::move(history_.back());
+    history_.pop_back();
+    scene_->Restore(std::move(snapshot));
+}
+
+void Scene::SceneSnapshotHolder::Save() {
+    history_.push_back(std::move(scene_->Save()));
+}
+
+Scene::SceneSnapshotHolder::SceneSnapshotHolder(Scene *scene): scene_(scene) {
+}

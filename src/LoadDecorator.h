@@ -9,10 +9,10 @@
 
 class LoadDecorator: public InputCommandDecorator {
 public:
-    LoadDecorator(InputCommandPtr wrappee, SceneSnapshotHolder* scene_snapshot_holder);
+    LoadDecorator(InputCommandPtr wrappee, Scene::SceneSnapshotHolder* scene_snapshot_holder);
     void Execute() override;
 private:
-    SceneSnapshotHolder* scene_snapshot_holder_;
+    Scene::SceneSnapshotHolder* scene_snapshot_holder_;
 };
 
 #endif //ATP_SHOOTER_LOADDECORATOR_H

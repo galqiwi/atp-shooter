@@ -40,6 +40,18 @@ public:
         SceneState state_;
     };
 
+    class SceneSnapshotHolder {
+    public:
+        SceneSnapshotHolder(Scene* scene);
+
+        void Save();
+
+        void Restore();
+    private:
+        Scene* scene_;
+        std::deque<Scene::SceneSnapshot> history_;
+    };
+
     SceneSnapshot Save();
     void Restore(SceneSnapshot);
 private:

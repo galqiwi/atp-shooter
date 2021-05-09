@@ -6,12 +6,11 @@
 #define ATP_SHOOTER_INPUTCOMMAND_H
 
 #include "Scene.h"
-#include "SceneSnapshotHolder.h"
 
 class InputCommand {
 public:
     InputCommand() = default;
-    static std::shared_ptr<InputCommand> GetCommand(Scene* scene, SceneSnapshotHolder* scene_snapshot_holder, double dt);
+    static std::shared_ptr<InputCommand> GetCommand(Scene* scene, Scene::SceneSnapshotHolder* scene_snapshot_holder, double dt);
     virtual void Execute() = 0;
 };
 
