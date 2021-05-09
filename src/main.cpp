@@ -3,10 +3,13 @@
 #include "GraphicsEngine.h"
 #include "FireballSpawner.h"
 #include "EnemySpawner.h"
+#include "InputCommand.h"
+#include "SceneSnapshotHolder.h"
 
 int main() {
     GraphicsFacade graphics_facade(1920 / 2, 1080 / 2, "Test");
     Scene scene;
+    SceneSnapshotHolder scene_snapshot_holder(&scene);
     GraphicsEngine graphics(scene, graphics_facade);
     double dt = 0;
 
@@ -20,19 +23,13 @@ int main() {
     size_t frame_counter = 0;
     double time_counter = 0;
 
-    std::optional<Scene::SceneSnapshot> quick_save;
     while (graphics_facade.IsWorking()) {
         double begin_timer = graphics_facade.GetTime();
         scene.UpdateScene();
         graphics.DrawScene();
-        auto pressed_buttons = graphics_facade.GetButtonsPressed();
-        if (pressed_buttons.quick_save) {
-            quick_save = scene.Save();
-        }
-        if (pressed_buttons.quick_load && quick_save.has_value()) {
-            scene.Restore(quick_save.value());
-        }
-        scene.GetPlayer().Action(pressed_buttons, dt);
+
+        InputCommand::GetCommand(&scene, &scene_snapshot_holder,  dt)->Execute();
+
         dt = graphics_facade.GetTime() - begin_timer;
 
         time_counter += dt;

@@ -68,3 +68,7 @@ int ButtonsPressed::GetXAction() const {
 int ButtonsPressed::GetYAction() const {
     return ((int) up) - ((int) down);
 }
+
+Vector2D ButtonsPressed::GetAction() const {
+    return Vector2D(GetXAction(), GetYAction());
+}

@@ -5,9 +5,9 @@ Player::Player(Vector2D position, Vector2D direction, uint32_t health) : positio
 
 }
 
-void Player::Action(ButtonsPressed controls, double dt) {
-    int x_action = controls.GetXAction();
-    int y_action = controls.GetYAction();
+void Player::Action(Vector2D action, double dt) {
+    double x_action = action.x;
+    double y_action = action.y;
 
     dt /= 10000;
 

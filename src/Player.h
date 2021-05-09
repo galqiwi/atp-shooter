@@ -15,7 +15,7 @@ public:
 
     Player(Vector2D position, Vector2D direction, uint32_t health);
 
-    void Action(ButtonsPressed controls, double dt);
+    void Action(Vector2D action, double dt);
 
     Vector2D& GetPosition();
 

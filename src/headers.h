@@ -6,6 +6,7 @@
 #include <memory>
 #include <fstream>
 #include <string>
+#include <queue>
 #include <sstream>
 #include <optional>
 #include "math.h"

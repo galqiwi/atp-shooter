@@ -26,8 +26,8 @@ public:
         };
 
         //not copyable
-        SceneSnapshot(const SceneSnapshot&) = default;
-        SceneSnapshot& operator=(const SceneSnapshot&) = default;
+        SceneSnapshot(const SceneSnapshot&) = delete;
+        SceneSnapshot& operator=(const SceneSnapshot&) = delete;
 
         SceneSnapshot(SceneSnapshot&&) = default;
         SceneSnapshot& operator=(SceneSnapshot&&) = default;
