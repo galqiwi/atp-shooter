@@ -38,3 +38,44 @@ Player& Scene::GetPlayer() {
     return player_;
 }
 
+Scene::SceneSnapshot Scene::Save() {
+    return Scene::SceneSnapshot(*this);
+}
+
+void Scene::Restore(Scene::SceneSnapshot snapshot) {
+    auto state = snapshot.GetState();
+
+    player_ = state.player_;
+    entities_.clear();
+    for (auto& entity: state.entities_) {
+        entities_.emplace_back(entity->Clone());
+    }
+}
+
+
+Scene::SceneSnapshot::SceneSnapshot(Scene &scene) {
+    for (auto& entity: scene.entities_) {
+        state_.entities_.emplace_back(entity->Clone());
+    }
+    state_.player_ = scene.player_;
+}
+
+Scene::SceneSnapshot::SceneState &Scene::SceneSnapshot::GetState() {
+    return state_;
+}
+
+void Scene::SceneSnapshotHolder::Restore() {
+    if (history_.empty()) {
+        return;
+    }
+    auto snapshot = std::move(history_.back());
+    history_.pop_back();
+    scene_->Restore(std::move(snapshot));
+}
+
+void Scene::SceneSnapshotHolder::Save() {
+    history_.push_back(std::move(scene_->Save()));
+}
+
+Scene::SceneSnapshotHolder::SceneSnapshotHolder(Scene *scene): scene_(scene) {
+}

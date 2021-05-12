@@ -46,9 +46,11 @@ uint64_t GraphicsFacade::GetTime() {
 
 ButtonsPressed GraphicsFacade::GetButtonsPressed() {
     return {sf::Keyboard::isKeyPressed(sf::Keyboard::Up),
-                          sf::Keyboard::isKeyPressed(sf::Keyboard::Down),
-                          sf::Keyboard::isKeyPressed(sf::Keyboard::Left),
-                          sf::Keyboard::isKeyPressed(sf::Keyboard::Right)};
+            sf::Keyboard::isKeyPressed(sf::Keyboard::Down),
+            sf::Keyboard::isKeyPressed(sf::Keyboard::Left),
+            sf::Keyboard::isKeyPressed(sf::Keyboard::Right),
+            sf::Keyboard::isKeyPressed(sf::Keyboard::F5),
+            sf::Keyboard::isKeyPressed(sf::Keyboard::F9)};
 }
 
 unsigned int GraphicsFacade::GetWidth() const {
@@ -59,16 +61,14 @@ unsigned int GraphicsFacade::GetHeight() const {
     return height_;
 }
 
-
-ButtonsPressed::ButtonsPressed(bool up, bool down, bool left, bool right) : up_(up), down_(down),
-                                                                            left_(left), right_(right) {
-
-}
-
 int ButtonsPressed::GetXAction() const {
-    return ((int) right_) - ((int) left_);
+    return ((int) right) - ((int) left);
 }
 
 int ButtonsPressed::GetYAction() const {
-    return ((int) up_) - ((int) down_);
+    return ((int) up) - ((int) down);
+}
+
+Vector2D ButtonsPressed::GetAction() const {
+    return Vector2D(GetXAction(), GetYAction());
 }

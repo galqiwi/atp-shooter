@@ -13,6 +13,9 @@ public:
     }
     void Update() override;
 
+    std::shared_ptr<Entity> Clone() {
+        return std::make_shared<Fireball>(*this);
+    }
 private:
     Vector2D speed_;
 };
